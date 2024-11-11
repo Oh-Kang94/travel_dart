@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:traveldart/page/main_page.dart';
+import 'package:traveldart/presentation/pages/main_page.dart';
 
 void main() {
   runApp(const MyApp());

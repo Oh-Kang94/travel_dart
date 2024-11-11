@@ -1,4 +1,4 @@
-import 'package:traveldart/model/result.dart';
+import 'package:traveldart/features/sigudong/entities/result.dart';
 
 class SaveResult {
   static List<Result> resultList = [];
