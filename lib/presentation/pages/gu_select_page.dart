@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:traveldart/presentation/components/common/spin_wheel.dart';
-import 'package:traveldart/features/sigudong/entities/result.dart';
 import 'package:traveldart/presentation/pages/dong_select_page.dart';
 import 'package:traveldart/services/get_sigudong.dart';
 
 class GuSelectPage extends StatefulWidget {
-  const GuSelectPage({super.key, required this.result});
-  final Result result;
+  const GuSelectPage({
+    super.key,
+    // required this.result,
+  });
+  // final Result result;
 
   @override
   State<GuSelectPage> createState() => _GuSelectPageState();
@@ -43,8 +45,8 @@ class _GuSelectPageState extends State<GuSelectPage> {
               },
             ),
             const SizedBox(height: 20),
-            Text(
-                "현재 까지 : ${widget.result.si} ${_selectedIndex != -1 ? list[_selectedIndex] : ''}"),
+            // Text(
+            // "현재 까지 : ${widget.result.si} ${_selectedIndex != -1 ? list[_selectedIndex] : ''}"),
             if (_selectedIndex != -1)
               Text(
                 '선택된 구: ${list[_selectedIndex]}',
@@ -52,11 +54,11 @@ class _GuSelectPageState extends State<GuSelectPage> {
                     const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
             const SizedBox(height: 20),
-            if (_selectedIndex != -1)
-              ElevatedButton(
-                onPressed: goNextPage,
-                child: const Text("동 선택하기"),
-              ),
+            // if (_selectedIndex != -1)
+            //   ElevatedButton(
+            //     onPressed: goNextPage,
+            //     child: const Text("동 선택하기"),
+            //   ),
           ],
         ),
       ),
@@ -64,22 +66,22 @@ class _GuSelectPageState extends State<GuSelectPage> {
   }
 
   _initialize() async {
-    rawList = await getSiGuDong.loadGuBySi(widget.result.si!);
-    for (String item in rawList) {
-      list.add(item);
-    }
+    // rawList = await getSiGuDong.loadGuBySi(widget.result.si!);
+    // for (String item in rawList) {
+    //   list.add(item);
+    // }
     setState(() {});
   }
 
-  void goNextPage() {
-    final Result result = widget.result.copyWith(gu: rawList[_selectedIndex]);
+  // void goNextPage() {
+  //   final Result result = widget.result.copyWith(gu: rawList[_selectedIndex]);
 
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) {
-          return DongSelectPage(result: result);
-        },
-      ),
-    );
-  }
+  //   Navigator.of(context).push(
+  //     MaterialPageRoute(
+  //       builder: (context) {
+  //         return DongSelectPage(result: result);
+  //       },
+  //     ),
+  //   );
+  // }
 }

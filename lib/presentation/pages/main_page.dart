@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:traveldart/features/sigudong/entities/result.dart';
 import 'package:traveldart/presentation/pages/do_select_page.dart';
 import 'package:traveldart/presentation/pages/who_select_page.dart';
-import 'package:traveldart/services/save_result.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -12,10 +10,10 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  late final List<Result> resultList;
+  // late final List<Result> resultList;
   @override
   void initState() {
-    resultList = SaveResult.resultList;
+    // resultList = SaveResult.resultList;
     super.initState();
   }
 
@@ -42,39 +40,39 @@ class _MainPageState extends State<MainPage> {
                 style: TextStyle(fontSize: 50),
               ),
             ),
-            if (resultList.isNotEmpty)
-              const Text(
-                "던진사람 리스트",
-                style: TextStyle(fontSize: 20),
-              ),
-            if (resultList.isNotEmpty)
-              ListView(
-                shrinkWrap: true,
-                children: List.generate(
-                  resultList.length,
-                  (index) => Text(
-                    resultList[index].name!,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-              ),
-            if (resultList.isNotEmpty)
-              MaterialButton(
-                onPressed: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return WhoSelectPage(
-                        resultList: resultList,
-                      );
-                    },
-                  ),
-                ),
-                child: const Text(
-                  "최종 여행지\n정하기",
-                  style: TextStyle(fontSize: 50),
-                  textAlign: TextAlign.center,
-                ),
-              ),
+            // if (resultList.isNotEmpty)
+            //   const Text(
+            //     "던진사람 리스트",
+            //     style: TextStyle(fontSize: 20),
+            //   ),
+            // if (resultList.isNotEmpty)
+            //   ListView(
+            //     shrinkWrap: true,
+            //     children: List.generate(
+            //       resultList.length,
+            //       (index) => Text(
+            //         resultList[index].name!,
+            //         textAlign: TextAlign.center,
+            //       ),
+            //     ),
+            //   ),
+            // if (resultList.isNotEmpty)
+            //   MaterialButton(
+            //     onPressed: () => Navigator.of(context).push(
+            //       MaterialPageRoute(
+            //         builder: (context) {
+            //           return WhoSelectPage(
+            //             resultList: resultList,
+            //           );
+            //         },
+            //       ),
+            //     ),
+            //     child: const Text(
+            //       "최종 여행지\n정하기",
+            //       style: TextStyle(fontSize: 50),
+            //       textAlign: TextAlign.center,
+            //     ),
+            //   ),
           ],
         ),
       ),

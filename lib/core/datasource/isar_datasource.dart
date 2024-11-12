@@ -2,6 +2,9 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:traveldart/features/game/entities/game.dart';
+import 'package:traveldart/features/game/entities/round.dart';
+import 'package:traveldart/features/user/entities/user.dart';
 
 part 'isar_datasource.g.dart';
 
@@ -43,7 +46,11 @@ class IsarDataSource {
     }
     final isar = await Isar.open(
       // Isar 데이터베이스를 스키마와 함께 오픈
-      [],
+      [
+        GameSchema,
+        RoundSchema,
+        UserSchema,
+      ],
       directory: dir.path,
     );
 

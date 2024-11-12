@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:traveldart/presentation/components/common/spin_wheel.dart';
-import 'package:traveldart/features/sigudong/entities/result.dart';
 import 'package:traveldart/presentation/pages/gu_select_page.dart';
 import 'package:traveldart/services/get_sigudong.dart';
 
@@ -52,11 +51,11 @@ class _DoSelectPageState extends State<DoSelectPage> {
                           fontSize: 24, fontWeight: FontWeight.bold),
                     ),
                   const SizedBox(height: 20),
-                  if (_selectedIndex != -1)
-                    ElevatedButton(
-                      onPressed: goNextPage,
-                      child: const Text("구 선택하기"),
-                    ),
+                  // if (_selectedIndex != -1)
+                  // ElevatedButton(
+                  //   onPressed: goNextPage,
+                  //   child: const Text("구 선택하기"),
+                  // ),
                 ],
               ),
       ),
@@ -73,16 +72,20 @@ class _DoSelectPageState extends State<DoSelectPage> {
     });
   }
 
-  void goNextPage() {
-    final Result result =
-        Result(name: null, si: rawList[_selectedIndex], gu: null, dong: null);
+  // void goNextPage() {
+  //   final Result result = Result(
+  //       index: 1,
+  //       name: null,
+  //       si: rawList[_selectedIndex],
+  //       gu: null,
+  //       dong: null);
 
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) {
-          return GuSelectPage(result: result);
-        },
-      ),
-    );
-  }
+  //   Navigator.of(context).push(
+  //     MaterialPageRoute(
+  //       builder: (context) {
+  //         return GuSelectPage(result: result);
+  //       },
+  //     ),
+  //   );
+  // }
 }

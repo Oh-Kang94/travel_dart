@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+// import 'package:flutter/services.dart';
 import 'package:traveldart/presentation/components/common/spin_wheel.dart';
-import 'package:traveldart/features/sigudong/entities/result.dart';
 import 'package:traveldart/presentation/pages/main_page.dart';
-import 'package:traveldart/services/save_result.dart';
 
 class WhoSelectPage extends StatefulWidget {
-  const WhoSelectPage({super.key, required this.resultList});
-  final List<Result> resultList;
+  const WhoSelectPage({
+    super.key,
+    // required this.resultList,
+  });
+  // final List<Result> resultList;
   @override
   State<WhoSelectPage> createState() => _WhoSelectPageState();
 }
 
 class _WhoSelectPageState extends State<WhoSelectPage> {
   List<String> list = [];
-  List<Result> rawList = [];
+  // List<Result> rawList = [];
   int _selectedIndex = -1;
 
   @override
@@ -59,15 +60,15 @@ class _WhoSelectPageState extends State<WhoSelectPage> {
   }
 
   _initialize() {
-    rawList = widget.resultList;
-    for (var element in rawList) {
-      list.add(element.name!);
-    }
+    // rawList = widget.resultList;
+    // for (var element in rawList) {
+    //   list.add(element.name!);
+    // }
     setState(() {});
   }
 
   void goMain() {
-    SaveResult.cleanResult();
+    // SaveResult.cleanResult();
 
     Navigator.of(context).pushAndRemoveUntil(
       MaterialPageRoute(builder: (context) => const MainPage()),
@@ -76,7 +77,7 @@ class _WhoSelectPageState extends State<WhoSelectPage> {
   }
 
   showDialogResult() {
-    final Result result = rawList[_selectedIndex];
+    // final Result result = rawList[_selectedIndex];
     showDialog(
       context: context,
       builder: (context) {
@@ -99,21 +100,21 @@ class _WhoSelectPageState extends State<WhoSelectPage> {
                 const SizedBox(
                   height: 10,
                 ),
-                Text(
-                    "최종 여행지는 \n${result.name!}의 \n${result.toString()} \n입니다."),
+                // Text(
+                //     "최종 여행지는 \n${result.name!}의 \n${result.toString()} \n입니다."),
                 const SizedBox(
                   height: 50,
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    Clipboard.setData(ClipboardData(text: result.toString()))
-                        .then((result) {
-                      const snackBar = SnackBar(
-                        backgroundColor: Colors.white,
-                        content: Text('복사되었습니다.', style: TextStyle(color: Colors.black),),
-                      );
-                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                    });
+                    // Clipboard.setData(ClipboardData(text: result.toString()))
+                    //     .then((result) {
+                    //   const snackBar = SnackBar(
+                    //     backgroundColor: Colors.white,
+                    //     content: Text('복사되었습니다.', style: TextStyle(color: Colors.black),),
+                    //   );
+                    //   ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    // });
                   },
                   child: const Text("결과 복사하기"),
                 ),
