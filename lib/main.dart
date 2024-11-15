@@ -8,7 +8,6 @@ import 'package:traveldart/core/datasource/isar_datasource.dart';
 import 'package:traveldart/core/util/app_size.dart';
 import 'package:traveldart/core/util/logger.dart';
 import 'package:traveldart/presentation/pages/base/responsive_layout.dart';
-import 'package:traveldart/presentation/pages/main_page.dart';
 
 main() async {
   WidgetsFlutterBinding.ensureInitialized();

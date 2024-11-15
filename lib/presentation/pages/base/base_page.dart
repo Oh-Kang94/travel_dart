@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -7,6 +9,8 @@ abstract class BasePage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final calledWillPop = useState(false);
+
     /// 페이지의 초기화 및 해제를 처리
     useEffect(
       () {
@@ -40,15 +44,19 @@ abstract class BasePage extends HookConsumerWidget {
     /// [preventSwipeBack]의 속성 값은 통해
     /// 플랫폼별 Swipe Back 제스쳐 작동 여부를 설정할 수 있음.
     ///
-    return PopScope(
-      canPop: canPop,
-      onPopInvokedWithResult: (_, __) async {
-        onWillPop(ref);
-      },
-      child: GestureDetector(
-        onTap: !preventAutoUnfocus
-            ? () => FocusManager.instance.primaryFocus?.unfocus()
-            : null,
+    return GestureDetector(
+      onTap: !preventAutoUnfocus
+          ? () => FocusManager.instance.primaryFocus?.unfocus()
+          : null,
+      child: PopScope(
+        canPop: canPop,
+        onPopInvokedWithResult: (didPop, __) async {
+          if (!calledWillPop.value && didPop) {
+            calledWillPop.value = true;
+            await onWillPop(ref);
+            calledWillPop.value = false;
+          }
+        },
         child: Container(
           color: unSafeAreaColor,
           child: wrapWithSafeArea
@@ -162,5 +170,5 @@ abstract class BasePage extends HookConsumerWidget {
 
   /// will pop시
   @protected
-  void onWillPop(WidgetRef ref) {}
+  FutureOr<void> onWillPop(WidgetRef ref) async {}
 }

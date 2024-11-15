@@ -8,7 +8,7 @@ part 'game.g.dart';
 class Game {
   Id id = Isar.autoIncrement;
   late String name;
+  @Backlink(to: 'game')
   final rounds = IsarLinks<Round>(); // 여러 라운드를 포함하는 링크
   final users = IsarLinks<User>(); // 게임에 참여한 유저들 링크
 }
- 
