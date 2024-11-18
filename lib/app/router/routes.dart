@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:traveldart/presentation/pages/main_page.dart';
 import 'package:traveldart/presentation/pages/multi_page.dart';
 import 'package:traveldart/presentation/pages/result_page.dart';
+import 'package:traveldart/presentation/pages/round_make_page.dart';
 import 'package:traveldart/presentation/pages/single_page.dart';
 import 'package:traveldart/presentation/pages/splash_page.dart';
 
@@ -37,11 +38,17 @@ class SplashRoute extends GoRouteData {
     TypedGoRoute<MultiRoute>(
       path: MultiRoute.path,
       name: MultiRoute.name,
+      routes: [
+        TypedGoRoute<RoundMakeRoute>(
+          path: RoundMakeRoute.path,
+          name: RoundMakeRoute.name,
+        ),
+      ],
     ),
     TypedGoRoute<ResultRoute>(
       path: ResultRoute.path,
       name: ResultRoute.name,
-    )
+    ),
   ],
 )
 @immutable
@@ -54,6 +61,24 @@ class MainRoute extends GoRouteData {
   @override
   Page<void> buildPage(BuildContext context, GoRouterState state) {
     return defaultPagination(context, state, const MainPage());
+  }
+}
+
+class RoundMakeRoute extends GoRouteData {
+  const RoundMakeRoute({
+    this.gameId,
+    this.roundIds,
+  });
+
+  final String? gameId;
+  final List<int>? roundIds;
+
+  static const String path = 'round';
+  static const String name = 'roundMake';
+
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    return defaultPagination(context, state, RoundMakePage(gameId, roundIds));
   }
 }
 

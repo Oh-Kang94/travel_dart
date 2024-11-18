@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:traveldart/app/router/routes.dart';
 import 'package:traveldart/app/theme/app_color.dart';
 import 'package:traveldart/app/theme/app_text_style.dart';
 import 'package:traveldart/core/constants/padding.dart';
@@ -47,7 +48,7 @@ class MultiPage extends BasePage {
                   controller: userAddController,
                   onEditingComplete: () => onAddUser(
                     ref,
-                    user: userAddController.text,
+                    userAddController: userAddController,
                   ),
                   decoration: InputDecoration(
                     hintText: '참가자 등장이여~',
@@ -65,7 +66,7 @@ class MultiPage extends BasePage {
                     content: '참가여~',
                     onTap: () => onAddUser(
                       ref,
-                      user: userAddController.text,
+                      userAddController: userAddController,
                     ),
                     canSelect: userAddController.text.isNotEmpty,
                   ),
@@ -133,7 +134,9 @@ class MultiPage extends BasePage {
             padding: const EdgeInsets.symmetric(vertical: 50),
             child: CustomButton(
               content: "다음으로",
-              onTap: () {},
+              onTap: () =>
+                  const RoundMakeRoute(gameId: '123', roundIds: [123, 5961])
+                      .push(ref.context),
             ),
           )
       ],

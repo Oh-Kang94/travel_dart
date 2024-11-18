@@ -7,7 +7,6 @@ class CLogger {
       // dateTimeFormat: DateTimeFormat.onlyTimeAndSinceStart,
       printEmojis: true,
       colors: false, // ANSI 색상 비활성화
-      methodCount: 0,
     ),
   );
 
@@ -41,6 +40,13 @@ class RiverPodLogger extends ProviderObserver {
     Object? newValue,
     ProviderContainer container,
   ) {
+    List<String> list = [];
+    if (newValue is List) {
+      for (var element in newValue) {
+        list.add(element.toString());
+      }
+      newValue = list;
+    }
     CLogger.i(
         '''[Provider Updated] provider : ${provider.name ?? provider.runtimeType} 
 value: ${newValue.toString()}''');
@@ -53,6 +59,13 @@ value: ${newValue.toString()}''');
     Object? value,
     ProviderContainer container,
   ) {
+    List<String> list = [];
+    if (value is List) {
+      for (var element in value) {
+        list.add(element.toString());
+      }
+      value = list;
+    }
     CLogger.i(
         '''[Provider Added] provider : ${provider.name ?? provider.runtimeType} 
 value : ${value.toString()}''');

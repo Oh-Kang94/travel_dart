@@ -1,6 +1,15 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'get_sigudong.g.dart';
+
+@riverpod
+GetSigudong siGuDong(Ref ref) {
+  return GetSigudong();
+}
 
 class GetSigudong {
   Future<List<String>> loadUniqueSi() async {
@@ -43,7 +52,8 @@ class GetSigudong {
 
   _getJson() async {
     // assets 폴더의 JSON 파일을 읽어오기
-    final String jsonString = await rootBundle.loadString('assets/sigudong.json');
+    final String jsonString =
+        await rootBundle.loadString('assets/sigudong.json');
     final List<dynamic> jsonData = json.decode(jsonString);
     return jsonData;
   }

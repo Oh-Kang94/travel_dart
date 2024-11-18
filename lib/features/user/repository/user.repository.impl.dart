@@ -11,7 +11,7 @@ part 'user.repository.impl.g.dart';
 
 @riverpod
 UserRepository userRepository(Ref ref) {
-  final IsarDataSource isar = ref.watch(isarProvider);
+  final IsarDataSource isar = ref.read(isarProvider);
   return UserRepositoryImpl(isar);
 }
 

@@ -47,6 +47,7 @@ app.*.map.json
 
 # VSCode
 .vscode/*
+cspell.json
 
 # Local History for Visual Studio Code
 .history/

@@ -1,18 +1,17 @@
 import 'package:isar/isar.dart';
 import 'package:traveldart/features/game/entities/round.dart';
-import 'package:traveldart/features/user/entities/user.dart';
 
-part 'game.g.dart';
+part 'template.g.dart';
 
 @collection
-class Game {
+class Template {
   Id id = Isar.autoIncrement;
   late String name;
+  @Backlink(to: 'template')
   final rounds = IsarLinks<Round>(); // 여러 라운드를 포함하는 링크
-  final users = IsarLinks<User>(); // 게임에 참여한 유저들 링크
 
   @override
   String toString() {
-    return "Game(name :$name, rounds : ${rounds.toString()})";
+    return "Template(name :$name, rounds : ${rounds.toString()})";
   }
 }
