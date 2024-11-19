@@ -38,7 +38,7 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<List<User>> getUser() {
+  Future<Result<List<User>>> getUser() {
     // TODO: implement getUser
     throw UnimplementedError();
   }

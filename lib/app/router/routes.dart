@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:traveldart/presentation/pages/main_page.dart';
 import 'package:traveldart/presentation/pages/multi_page.dart';
 import 'package:traveldart/presentation/pages/result_page.dart';
+import 'package:traveldart/presentation/pages/roulette_page.dart';
 import 'package:traveldart/presentation/pages/round_make_page.dart';
 import 'package:traveldart/presentation/pages/single_page.dart';
 import 'package:traveldart/presentation/pages/splash_page.dart';
@@ -115,6 +116,20 @@ class ResultRoute extends GoRouteData {
   @override
   Page<void> buildPage(BuildContext context, GoRouterState state) {
     return defaultPagination(context, state, const ResultPage());
+  }
+}
+
+@TypedGoRoute<RouletteRoute>(
+  path: RouletteRoute.path,
+  name: RouletteRoute.name,
+)
+class RouletteRoute extends GoRouteData {
+  const RouletteRoute();
+  static const String path = '/roulette';
+  static const String name = 'Roulette';
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) {
+    return defaultPagination(context, state, const RoulettePage());
   }
 }
 

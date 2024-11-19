@@ -30,6 +30,7 @@ class CustomButton extends HookWidget {
     final buttonState = useState(ButtonState.able);
     return GestureDetector(
       onTap: () async => await _handleOnTap(buttonState, onTap),
+      behavior: HitTestBehavior.opaque,
       child: Text(
         _content(buttonState.value),
         maxLines: 1,
@@ -41,9 +42,22 @@ class CustomButton extends HookWidget {
 
   String _content(ButtonState buttonState) {
     if (!doAnimate) return content;
+    const int animatedTextLength = 4;
+    late final int padRight;
+    late final int padLeft;
+
+    if (content.length > animatedTextLength) {
+      final calculatedPad = ((content.length - animatedTextLength) / 2).ceil();
+      padRight = calculatedPad;
+      padLeft = calculatedPad;
+    } else {
+      padRight = 0;
+      padLeft = 0;
+    }
+
     return switch (buttonState) {
       ButtonState.able => content,
-      ButtonState.pressed => "믿음??",
+      ButtonState.pressed => "믿음??".padLeft(padLeft).padLeft(padRight),
       ButtonState.disable => content,
     };
   }

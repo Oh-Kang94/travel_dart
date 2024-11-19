@@ -4,7 +4,7 @@ import 'package:traveldart/features/user/entities/user.dart';
 part 'user_provider.g.dart';
 
 @riverpod
-class UserProvider extends _$UserProvider {
+class UserNotifier extends _$UserNotifier {
   @override
   List<User> build() {
     return [];
@@ -29,4 +29,6 @@ class UserProvider extends _$UserProvider {
   popAll() {
     state = [];
   }
+
+  get getUser => state;
 }

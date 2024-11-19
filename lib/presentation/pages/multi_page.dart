@@ -84,6 +84,8 @@ class MultiPage extends BasePage {
   Widget buildUserList(WidgetRef ref) {
     final users = entryUser(ref);
 
+    const padding = 20 * 2; // Default Padding is 20
+
     if (users.isEmpty) return const SizedBox.shrink(); // 유저가 없으면 빈 공간 반환
 
     return Column(
@@ -104,7 +106,7 @@ class MultiPage extends BasePage {
         Container(
           decoration:
               BoxDecoration(border: Border.all(color: AppColor.of.black)),
-          width: AppSize.to.screenWidth * 0.8,
+          width: AppSize.to.screenWidth - padding,
           constraints: BoxConstraints(
             maxHeight: AppSize.to.screenWidth,
           ),
@@ -134,9 +136,8 @@ class MultiPage extends BasePage {
             padding: const EdgeInsets.symmetric(vertical: 50),
             child: CustomButton(
               content: "다음으로",
-              onTap: () =>
-                  const RoundMakeRoute(gameId: '123', roundIds: [123, 5961])
-                      .push(ref.context),
+              onTap: () => const RoundMakeRoute(gameId: null, roundIds: null)
+                  .push(ref.context),
             ),
           )
       ],
